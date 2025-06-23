@@ -51,20 +51,20 @@ This is a Minecraft bot built using Mineflayer.
 
 ## Installation
 
-Clone this repository and move into it.
+Clone the repo and go into the folder:
+
+```bash
+git clone https://github.com/oceanthunder/Zerobrine
+cd guardbot
+````
 
 Make sure you have Node.js and npm installed.
 
-Then install the required dependencies:
+Then just run:
 
 ```bash
-npm install mineflayer mineflayer-pvp mineflayer-pathfinder mineflayer-auto-eat vec3
-````
-
----
-
-Start your Minecraft server (bot joins `localhost:25565` by default, to change it change the port and host in bot.js), then run:
-
-```bash
-node bot.js
+npm install
+npm start
 ```
+
+That’s it. The bot should connect to your Minecraft server (default is localhost:25565, you can change it in bot.js's host and port).
