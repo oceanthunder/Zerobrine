@@ -3,7 +3,7 @@ const manualHostiles = new Set();
 function findNearestHostile(bot) {
   const isHostile = e =>
     ((e.type === 'hostile' ||
-      ['zombie', 'skeleton', 'spider', 'creeper', 'pillager', 'enderman', 'iron_golem'].includes(e.name.toLowerCase())) ||
+      ['zombie', 'skeleton', 'spider', 'creeper', 'pillager'].includes(e.name.toLowerCase())) ||
      (e.type === 'player' && manualHostiles.has(e.username)));
 
   return Object.values(bot.entities)
