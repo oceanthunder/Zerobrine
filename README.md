@@ -55,7 +55,7 @@ Clone the repo and go into the folder:
 
 ```bash
 git clone https://github.com/oceanthunder/Zerobrine
-cd guardbot
+cd Zerobrine
 ````
 
 Make sure you have Node.js and npm installed.
