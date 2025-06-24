@@ -11,6 +11,7 @@ const { attackNearestHostile } = require('./actions/attackHostile');
 const { markPlayerHostile } = require('./actions/attackPlayer');
 const { stopCombat } = require('./actions/stop');
 const { registerComeCommand } = require('./actions/comeCommand');
+const { sleepIfRequested } = require('./utils/sleep');
 const {
   handleGuardCommand,
   getGuardTarget,
@@ -34,8 +35,9 @@ bot.once('spawn', async () => {
   bot.chat("Hello World! Now, gimme some bread.");
 registerComeCommand(bot);
 
-  bot.on('chat', (username, message) => {
+  bot.on('chat', async (username, message) => {
     if (username === bot.username) return;
+    await sleepIfRequested(bot, message);
     const parts = message.trim().split(/\s+/);
     const cmd = parts[0]?.toLowerCase();
 
