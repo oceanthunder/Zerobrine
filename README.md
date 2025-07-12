@@ -4,6 +4,8 @@ This is a Minecraft bot built using Mineflayer.
 
 ---
 
+![Zerobrine](assets/zerobrine.png)
+
 ## Features
 
 - Follows a player when told
