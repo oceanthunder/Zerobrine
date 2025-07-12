@@ -13,15 +13,15 @@ const { stopCombat } = require('./actions/stop');
 const { registerComeCommand } = require('./actions/comeCommand');
 const { sleepIfRequested } = require('./utils/sleep');
 const {
-  handleGuardCommand,
-  getGuardTarget,
-  continueGuarding,
-  returnToGuardPos
-} = require('./actions/guard');
+  handleFollowCommand,
+  getFollowTarget,
+  continueFollowing,
+  returnToFollowPos
+} = require('./actions/follow');
 
 const bot = mineflayer.createBot({
   host: 'localhost',
-  port: 25565,
+  port: 42069,
   username: 'Zerobrine',
 });
 
@@ -33,7 +33,7 @@ bot.once('spawn', async () => {
   const mcData = (await import('minecraft-data')).default(bot.version);
   bot.pathfinder.setMovements(new Movements(bot, mcData));
   bot.chat("Hello World! Now, gimme some bread.");
-registerComeCommand(bot);
+  registerComeCommand(bot);
 
   bot.on('chat', async (username, message) => {
     if (username === bot.username) return;
@@ -41,8 +41,8 @@ registerComeCommand(bot);
     const parts = message.trim().split(/\s+/);
     const cmd = parts[0]?.toLowerCase();
 
-    if (cmd === 'guard' && parts.length === 3) {
-      handleGuardCommand(bot, parts[1], parts[2]);
+    if (cmd === 'follow' && parts.length === 3) {
+      handleFollowCommand(bot, parts[1], parts[2]);
     }
 
     if (cmd === 'attack' && parts.length === 2) {
@@ -57,11 +57,11 @@ registerComeCommand(bot);
   setInterval(async () => {
     await attackNearestHostile(bot);
 
-    const target = getGuardTarget();
+    const target = getFollowTarget();
     if (target) {
-      continueGuarding(bot);
+      continueFollowing(bot);
     } else {
-      returnToGuardPos(bot);
+      returnToFollowPos(bot);
     }
   }, 500);
 });
