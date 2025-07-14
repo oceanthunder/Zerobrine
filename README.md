@@ -4,7 +4,7 @@ This is a Minecraft bot built using Mineflayer.
 
 ---
 
-![Zerobrine](assets/zerobrine.png)
+![Zerobrine](youtu.be/NdEub6GULOo?feature=shared)
 
 ## Features
 
