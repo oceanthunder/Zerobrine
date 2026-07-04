@@ -1,6 +1,6 @@
 # Zerobrine 
 The forgotten sister, defying her brother's curse with quiet light.
-[![scarred](assets/zerobrine.png)](https://youtu.be/35-TeWmnmro)
+![scarred](assets/zerobrine.png)
 
 ## What it does
 * `follow Zerobrine <playerName>` – Zerobrine will follow the player
