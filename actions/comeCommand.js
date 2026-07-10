@@ -1,15 +1,6 @@
-// utils/comeCommand.js
-const { Movements, goals } = require('mineflayer-pathfinder');
-const mcDataLoader = require('minecraft-data');
-const { GoalBlock } = goals;
+const { GoalBlock } = require('mineflayer-pathfinder').goals;
 
 function registerComeCommand(bot) {
-  const mcData = mcDataLoader(bot.version);
-  const movements = new Movements(bot, mcData);
-  movements.allowFreeMotion = true;
-  movements.allow1by1towers = true;
-  bot.pathfinder.setMovements(movements);
-
   bot.on('chat', (username, message) => {
     if (username === bot.username) return;
 
@@ -18,15 +9,9 @@ function registerComeCommand(bot) {
     if (match) {
       const [x, y, z] = match.slice(1).map(Number);
       bot.chat(`Coming to ${x} ${y} ${z}`);
-      const goal = new GoalBlock(x, y, z);
-      bot.pathfinder.setGoal(goal);
+      bot.pathfinder.setGoal(new GoalBlock(x, y, z));
     }
-  });
-
-  bot.on('goal_reached', () => {
-    bot.chat("Arrived at the destination.");
   });
 }
 
 module.exports = { registerComeCommand };
-

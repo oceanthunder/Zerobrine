@@ -1,9 +1,14 @@
 const manualHostiles = new Set();
 
+const HOSTILE_MOBS = [
+  'zombie', 'skeleton', 'spider', 'creeper', 'pillager',
+  'breeze', 'bogged', 'zombie_nautilus', 'camel_husk', 'parched', 'zombie_horse'
+];
+
 function findNearestHostile(bot) {
   const isHostile = e =>
-    ((e.type === 'hostile' ||
-      ['zombie', 'skeleton', 'spider', 'creeper', 'pillager'].includes(e.name.toLowerCase())) ||
+    e && e.name && e.position &&
+    ((e.type === 'hostile' || HOSTILE_MOBS.includes(e.name.toLowerCase())) ||
      (e.type === 'player' && manualHostiles.has(e.username)));
 
   return Object.values(bot.entities)
@@ -13,6 +18,6 @@ function findNearestHostile(bot) {
 
 module.exports = {
   findNearestHostile,
-  manualHostiles
+  manualHostiles,
+  HOSTILE_MOBS
 };
-

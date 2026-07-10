@@ -1,11 +1,10 @@
-const { manualHostiles } = require('./combatUtils');
+const { manualHostiles, HOSTILE_MOBS } = require('./combatUtils');
 
 function lookAtNearestLivingEntity(bot) {
   const entity = bot.nearestEntity(e =>
-    e.position && e.isValid &&
+    e && e.position && e.isValid && e.name &&
     (
-      (e.type === 'hostile' ||
-        ['zombie', 'skeleton', 'spider', 'creeper', 'pillager'].includes(e.name.toLowerCase())) ||
+      (e.type === 'hostile' || HOSTILE_MOBS.includes(e.name.toLowerCase())) ||
       (e.type === 'player' && manualHostiles.has(e.username))
     )
   );
@@ -15,4 +14,3 @@ function lookAtNearestLivingEntity(bot) {
 }
 
 module.exports = { lookAtNearestLivingEntity };
-

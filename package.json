@@ -1,6 +1,6 @@
 {
   "name": "Zerobrine",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "The Forgotten Sister.",
   "main": "bot.js",
   "type": "commonjs",
@@ -9,9 +9,10 @@
   },
   "dependencies": {
     "mineflayer": "^4.29.0",
-    "mineflayer-auto-eat": "^5.0.1",
+    "mineflayer-auto-eat": "^3.3.6",
     "mineflayer-pathfinder": "^2.4.5",
-    "mineflayer-pvp": "^1.3.2"
+    "mineflayer-pvp": "^1.3.2",
+    "minecraft-data": "^3.79.0",
+    "vec3": "^0.1.10"
   }
 }
-
